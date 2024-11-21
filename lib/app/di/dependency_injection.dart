@@ -29,6 +29,7 @@ abstract class RegisterModule {
 
 Dio _dioFactory() {
   final BaseOptions baseOptions = BaseOptions(
+    baseUrl: const String.fromEnvironment('BASE_URL'),
     headers: <String, dynamic>{'Content-Type': 'application/json'},
   );
 

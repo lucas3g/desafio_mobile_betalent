@@ -9,16 +9,11 @@ class CustomPageRouteBuilder extends PageRouteBuilder<Widget> {
   final RouteSettings settings;
 
   CustomPageRouteBuilder({
-    required Widget Function(
-      BuildContext,
-      Animation<double>,
-      Animation<double>,
-    ) pageBuilder,
+    required super.pageBuilder,
     required this.customTransition,
     required this.settings,
   }) : super(
           settings: settings,
-          pageBuilder: pageBuilder,
           transitionDuration: customTransition.duration,
           transitionsBuilder: (BuildContext context,
               Animation<double> animation,
