@@ -1,8 +1,8 @@
 class AppThemeConstants {
   static const double halfPadding = 6.0;
-  static const double mediumPadding = 12;
-  static const double padding = 16.0;
-  static const double borderRadius = 5.0;
+  static const double mediumPadding = 14;
+  static const double padding = 20;
+  static const double borderRadius = 8.0;
   static const double mediumBorderRadius = 10;
   static const double largeBorderRadius = 20.0;
 

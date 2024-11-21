@@ -15,4 +15,6 @@ class EmployeeFailure extends AppFailure {
 
   @override
   int get hashCode => message.hashCode;
+
+  static unExpected() => EmployeeFailure(message: 'Unexpected error');
 }

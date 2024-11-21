@@ -27,6 +27,18 @@ extension FormatMilhar on int {
   }
 }
 
+extension FormatPhone on String {
+  String formatPhone() {
+    if (length < 13) {
+      throw Exception('Telefone inválido');
+    }
+
+    final result =
+        '+${substring(0, 2)} (${substring(2, 4)}) ${substring(4, 9)}-${substring(9, 13)}';
+    return result;
+  }
+}
+
 class UpperCaseTextFormatter extends TextInputFormatter {
   @override
   TextEditingValue formatEditUpdate(
