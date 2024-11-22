@@ -147,7 +147,7 @@ flutter test
 - Certifique-se de que o json_rest_server está rodando antes de iniciar a aplicação
 - Verifique se está usando a versão correta do Flutter (3.24.5)
 - Em caso de problemas com a conexão, verifique se o IP no arquivo mobile.env está correto
-- Usei a fonte "Arimo" do google_fonts que é a mais se a semelha a Helvética (by carinha do grupo StackOverflow).
+- Usei a fonte "Arimo" do google_fonts que é a mais semelhante a Helvética (by carinha do grupo StackOverflow).
 
 ## 📱 Versão
 
