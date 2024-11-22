@@ -16,20 +16,27 @@ class HeaderEmployeeWidget extends StatelessWidget {
           radius: 20,
           child: Text('CG'),
         ),
-        badges.Badge(
-          badgeContent: Text(
-            '02',
-            style: context.textTheme.titleLarge?.copyWith(
-              fontSize: AppThemeConstants.h5FontSize,
-              color: context.colorScheme.onPrimary,
-              fontWeight: FontWeight.bold,
+        Ink(
+          child: InkWell(
+            onTap: () {
+              Scaffold.of(context).openEndDrawer();
+            },
+            child: badges.Badge(
+              badgeContent: Text(
+                '02',
+                style: context.textTheme.titleLarge?.copyWith(
+                  fontSize: AppThemeConstants.h5FontSize,
+                  color: context.colorScheme.onPrimary,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              badgeStyle: badges.BadgeStyle(
+                badgeColor: context.colorScheme.primary,
+              ),
+              child: Image.asset(
+                AppAssets.iconNotification,
+              ),
             ),
-          ),
-          badgeStyle: badges.BadgeStyle(
-            badgeColor: context.colorScheme.primary,
-          ),
-          child: Image.asset(
-            AppAssets.iconNotification,
           ),
         ),
       ],

@@ -6,6 +6,7 @@ import 'package:desafio_mobile_betalent/app/modules/employees/presenter/controll
 import 'package:desafio_mobile_betalent/app/modules/employees/presenter/controller/bloc/employee_states.dart';
 import 'package:desafio_mobile_betalent/app/modules/employees/presenter/widgets/body_employee_widget.dart';
 import 'package:desafio_mobile_betalent/app/modules/employees/presenter/widgets/header_employee_widget.dart';
+import 'package:desafio_mobile_betalent/app/modules/employees/presenter/widgets/notification_drawer_widget.dart';
 import 'package:desafio_mobile_betalent/app/shared/components/app_snackbar.dart';
 import 'package:desafio_mobile_betalent/app/shared/components/spacer_height_widget.dart';
 import 'package:desafio_mobile_betalent/app/shared/domain/entities/app_theme_constants.dart';
@@ -61,6 +62,7 @@ class _EmployeesPageState extends State<EmployeesPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      endDrawer: const NotificationDrawerWidget(),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(AppThemeConstants.padding),
