@@ -61,14 +61,16 @@ class _EmployeesPageState extends State<EmployeesPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.all(AppThemeConstants.padding),
-        child: Column(
-          children: <Widget>[
-            const HeaderEmployeeWidget(),
-            const SpacerHeight(),
-            BodyEmployeeWidget(employeeBloc: employeeBloc),
-          ],
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.all(AppThemeConstants.padding),
+          child: Column(
+            children: <Widget>[
+              const HeaderEmployeeWidget(),
+              const SpacerHeight(),
+              BodyEmployeeWidget(employeeBloc: employeeBloc),
+            ],
+          ),
         ),
       ),
     );
