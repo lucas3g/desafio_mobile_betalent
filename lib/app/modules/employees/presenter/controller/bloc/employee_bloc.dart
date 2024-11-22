@@ -13,6 +13,7 @@ class EmployeeBloc extends Bloc<EmployeeEvents, EmployeeStates> {
       : _getEmployees = getEmployees,
         super(EmployeeInitial()) {
     on<GetEmployeesEvent>(_getEmployeesEvent);
+    on<FilterEmployeesEvent>(_filterEmployeesEvent);
   }
 
   Future<void> _getEmployeesEvent(
@@ -25,5 +26,10 @@ class EmployeeBloc extends Bloc<EmployeeEvents, EmployeeStates> {
       (failure) => emit(state.error(message: failure.message)),
       (employees) => emit(state.loaded(employees: employees)),
     );
+  }
+
+  void _filterEmployeesEvent(
+      FilterEmployeesEvent event, Emitter<EmployeeStates> emit) {
+    emit(state.loaded(filter: event.filter));
   }
 }

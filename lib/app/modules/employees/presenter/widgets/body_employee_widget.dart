@@ -1,17 +1,24 @@
 import 'package:desafio_mobile_betalent/app/modules/employees/presenter/controller/bloc/employee_bloc.dart';
+import 'package:desafio_mobile_betalent/app/modules/employees/presenter/controller/bloc/employee_events.dart';
 import 'package:desafio_mobile_betalent/app/modules/employees/presenter/controller/bloc/employee_states.dart';
+import 'package:desafio_mobile_betalent/app/modules/employees/presenter/widgets/expansion_tile_card_employee_widget.dart';
 import 'package:desafio_mobile_betalent/app/shared/components/spacer_height_widget.dart';
-import 'package:desafio_mobile_betalent/app/shared/components/spacer_width.dart';
+import 'package:desafio_mobile_betalent/app/shared/components/text_form_field.dart';
 import 'package:desafio_mobile_betalent/app/shared/domain/entities/app_theme_constants.dart';
 import 'package:desafio_mobile_betalent/app/shared/extensions/build_context_extension.dart';
-import 'package:desafio_mobile_betalent/app/shared/utils/formatters.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class BodyEmployeeWidget extends StatelessWidget {
+class BodyEmployeeWidget extends StatefulWidget {
   final EmployeeBloc employeeBloc;
   const BodyEmployeeWidget({super.key, required this.employeeBloc});
 
+  @override
+  State<BodyEmployeeWidget> createState() => _BodyEmployeeWidgetState();
+}
+
+class _BodyEmployeeWidgetState extends State<BodyEmployeeWidget> {
+  final TextEditingController _searchController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Expanded(
@@ -22,13 +29,28 @@ class BodyEmployeeWidget extends StatelessWidget {
             'Funcionários',
             style: context.textTheme.titleLarge?.copyWith(
               fontSize: AppThemeConstants.h1FontSize,
-              fontWeight: FontWeight.w500,
+              fontWeight: FontWeight.w600,
             ),
+          ),
+          const SpacerHeight(),
+          AppTextFormField(
+            controller: _searchController,
+            hint: 'Pesquisar',
+            preffixIcon: Icon(
+              Icons.search,
+              color: context.colorScheme.secondary,
+              size: 24,
+            ),
+            onChanged: (value) {
+              widget.employeeBloc.add(
+                FilterEmployeesEvent(value),
+              );
+            },
           ),
           const SpacerHeight(),
           Expanded(
             child: BlocBuilder<EmployeeBloc, EmployeeStates>(
-              bloc: employeeBloc,
+              bloc: widget.employeeBloc,
               builder: (context, state) {
                 if (state is EmployeeLoading) {
                   return const Center(
@@ -37,7 +59,7 @@ class BodyEmployeeWidget extends StatelessWidget {
                 }
 
                 if (state is EmployeeLoaded) {
-                  final employees = state.employees;
+                  final employees = state.filteredEmployees;
 
                   if (employees.isEmpty) {
                     return const Center(
@@ -72,17 +94,41 @@ class BodyEmployeeWidget extends StatelessWidget {
                               ),
                             ),
                           ),
-                          child: const Row(
+                          child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Row(
                                 children: [
-                                  Text('Foto'),
-                                  SpacerWidth(),
-                                  Text('Nome'),
+                                  Text(
+                                    'Foto',
+                                    style:
+                                        context.textTheme.titleLarge?.copyWith(
+                                      fontSize: AppThemeConstants.h2FontSize,
+                                      fontWeight: FontWeight.w600,
+                                    ),
+                                  ),
+                                  const SizedBox(
+                                    width: AppThemeConstants.spacingRegular24,
+                                  ),
+                                  Text(
+                                    'Nome',
+                                    style:
+                                        context.textTheme.titleLarge?.copyWith(
+                                      fontSize: AppThemeConstants.h2FontSize,
+                                      fontWeight: FontWeight.w600,
+                                    ),
+                                  ),
                                 ],
                               ),
-                              Text('.'),
+                              const Padding(
+                                padding: EdgeInsets.only(
+                                  right: AppThemeConstants.halfPadding,
+                                ),
+                                child: Icon(
+                                  Icons.circle,
+                                  size: 10,
+                                ),
+                              )
                             ],
                           ),
                         ),
@@ -104,49 +150,8 @@ class BodyEmployeeWidget extends StatelessWidget {
                                         )
                                       : null,
                                 ),
-                                child: Theme(
-                                  data: Theme.of(context).copyWith(
-                                    dividerColor: Colors.transparent,
-                                  ),
-                                  child: ExpansionTile(
-                                    tilePadding: const EdgeInsets.all(
-                                      AppThemeConstants.mediumBorderRadius,
-                                    ),
-                                    leading: CircleAvatar(
-                                      radius: 18,
-                                      backgroundImage:
-                                          NetworkImage(employee.image.value),
-                                    ),
-                                    title: Text(employee.name.value),
-                                    children: [
-                                      Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: <Widget>[
-                                          const Text('Cargo'),
-                                          Text(employee.job.value),
-                                        ],
-                                      ),
-                                      Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: <Widget>[
-                                          const Text('Data de admissão'),
-                                          Text(employee.admissionDate.value
-                                              .formatDate()),
-                                        ],
-                                      ),
-                                      Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: <Widget>[
-                                          const Text('Telefone'),
-                                          Text(employee.phone.value
-                                              .formatPhone()),
-                                        ],
-                                      ),
-                                    ],
-                                  ),
+                                child: ExpansionTileCardEmployeeWidget(
+                                  employee: employee,
                                 ),
                               );
                             },

@@ -24,6 +24,19 @@ sealed class EmployeeStates {
         employees: employees,
         filter: filter,
       );
+
+  List<Employee> get filteredEmployees {
+    if (filter.isEmpty) {
+      return employees;
+    }
+
+    return employees
+        .where((employee) =>
+            employee.name.value.toLowerCase().contains(filter.toLowerCase()) ||
+            employee.job.value.toLowerCase().contains(filter.toLowerCase()) ||
+            employee.phone.value.contains(filter))
+        .toList();
+  }
 }
 
 class EmployeeInitial extends EmployeeStates {

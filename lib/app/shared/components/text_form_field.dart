@@ -23,6 +23,7 @@ class AppTextFormField extends StatefulWidget {
   TextInputAction? textInputAction;
   bool readOnly;
   Widget? suffixIcon;
+  Widget? preffixIcon;
 
   AppTextFormField({
     super.key,
@@ -43,6 +44,7 @@ class AppTextFormField extends StatefulWidget {
     this.textInputAction,
     this.readOnly = false,
     this.suffixIcon,
+    this.preffixIcon,
   });
 
   @override
@@ -73,65 +75,21 @@ class _AppTextFormFieldState extends State<AppTextFormField> {
       obscureText: _hideInput,
       controller: widget.controller,
       cursorColor: widget.borderColor ?? context.colorScheme.surface,
-      style: context.textTheme.bodyLarge?.copyWith(
-        color: widget.borderColor ?? context.colorScheme.surface,
-        decorationColor: Colors.transparent,
-        decorationThickness: 0,
-      ),
       decoration: InputDecoration(
+        filled: true,
+        fillColor: context.colorScheme.tertiaryContainer,
         isDense: true,
-        label: widget.title != null ? Text(widget.title!) : null,
-        labelStyle: context.textTheme.bodyLarge?.copyWith(
-          color: widget.borderColor ?? context.colorScheme.surface,
-        ),
         border: OutlineInputBorder(
-          borderSide: BorderSide(
-            color: widget.borderColor ?? context.colorScheme.surface,
-          ),
-          borderRadius: BorderRadius.circular(
-            AppThemeConstants.mediumBorderRadius,
-          ),
-        ),
-        errorStyle: context.textTheme.bodyMedium?.copyWith(
-          color: widget.borderColor ?? context.colorScheme.surface,
-        ),
-        errorBorder: OutlineInputBorder(
-          borderSide: BorderSide(
-            color: widget.borderColor ?? context.colorScheme.surface,
-          ),
-          borderRadius: BorderRadius.circular(
-            AppThemeConstants.mediumBorderRadius,
-          ),
-        ),
-        focusedErrorBorder: OutlineInputBorder(
-          borderSide: BorderSide(
-            color: widget.borderColor ?? context.colorScheme.surface,
-          ),
-          borderRadius: BorderRadius.circular(
-            AppThemeConstants.mediumBorderRadius,
-          ),
-        ),
-        enabledBorder: OutlineInputBorder(
-          borderSide: BorderSide(
-            color: widget.borderColor ?? context.colorScheme.surface,
-          ),
-          borderRadius: BorderRadius.circular(
-            AppThemeConstants.mediumBorderRadius,
-          ),
-        ),
-        focusedBorder: OutlineInputBorder(
-          borderSide: BorderSide(
-            color: widget.borderColor ?? context.colorScheme.surface,
-          ),
-          borderRadius: BorderRadius.circular(
-            AppThemeConstants.mediumBorderRadius,
-          ),
+          borderSide: BorderSide.none,
+          borderRadius: BorderRadius.circular(100),
         ),
         hintStyle: context.textTheme.bodyMedium?.copyWith(
-          color:
-              widget.borderColor ?? context.colorScheme.surface.withAlpha(150),
+          color: context.colorScheme.secondary,
+          fontSize: AppThemeConstants.h3FontSize,
+          fontWeight: FontWeight.w400,
         ),
         hintText: widget.hint,
+        prefixIcon: widget.preffixIcon,
         suffixIcon: widget.hideInput
             ? IconButton(
                 onPressed: () {
@@ -146,8 +104,6 @@ class _AppTextFormFieldState extends State<AppTextFormField> {
               )
             : widget.suffixIcon,
       ),
-      validator: widget.validator,
-      inputFormatters: widget.inputFormatters,
     );
   }
 }
