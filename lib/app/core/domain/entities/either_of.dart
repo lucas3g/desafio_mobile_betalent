@@ -73,5 +73,6 @@ class Resolve<Failure, Success> extends EitherOf<Failure, Success> {
 
 EitherOf<Failure, Success> reject<Failure, Success>(Failure reject) =>
     Reject<Failure, Success>(reject);
+
 EitherOf<Failure, Success> resolve<Failure, Success>(Success resolve) =>
     Resolve<Failure, Success>(resolve);
