@@ -66,7 +66,39 @@ Para descobrir seu IP:
 - Windows: `ipconfig`
 - Linux/Mac: `ifconfig` ou `ip addr`
 
-### 5. Executando o Projeto
+### 5. Configurando o VSCode (Recomendado)
+
+Para facilitar o desenvolvimento, você pode configurar o VSCode para executar o projeto com diferentes configurações de ambiente. Crie ou atualize o arquivo `.vscode/launch.json` com o seguinte conteúdo:
+
+```json
+{
+  "version": "0.2.0",
+  "configurations": [
+      {
+          "name": "[pc] desafio_mobile_betalent",
+          "request": "launch",
+          "type": "dart",
+          "toolArgs": [
+              "--dart-define-from-file",
+              "pc.env",
+          ]
+      },
+      {
+          "name": "[mobile] desafio_mobile_betalent",
+          "request": "launch",
+          "type": "dart",
+          "toolArgs": [
+              "--dart-define-from-file",
+              "mobile.env",
+          ]
+      },
+  ]
+}
+```
+
+Com esta configuração, você poderá facilmente alternar entre as configurações de PC e mobile diretamente no VSCode.
+
+### 6. Executando o Projeto
 
 Para Desktop:
 ```bash
@@ -78,7 +110,7 @@ Para Mobile:
 flutter run --dart-define-from-file=mobile.env
 ```
 
-### 6. Executando os Testes
+### 7. Executando os Testes
 
 Para rodar os testes do projeto:
 
