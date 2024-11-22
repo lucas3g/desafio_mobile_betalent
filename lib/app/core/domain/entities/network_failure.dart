@@ -1,7 +1,7 @@
 import 'failure.dart';
 
 class NetworkFailure extends AppFailure {
-  NetworkFailure(String message) : super(message);
+  NetworkFailure(super.message);
 
   @override
   bool operator ==(Object other) {

@@ -7,8 +7,6 @@ import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:injectable/injectable.dart';
 
-import '../core/domain/entities/app_global.dart';
-
 final GetIt getIt = GetIt.instance;
 
 @InjectableInit(
@@ -17,8 +15,6 @@ final GetIt getIt = GetIt.instance;
   asExtension: true,
 )
 Future<void> configureDependencies() async {
-  _initAppGlobal();
-
   getIt.init();
 }
 
@@ -34,8 +30,4 @@ Dio _dioFactory() {
   );
 
   return Dio(baseOptions);
-}
-
-void _initAppGlobal() {
-  AppGlobal();
 }
