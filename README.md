@@ -59,7 +59,7 @@ O projeto possui dois arquivos de configuração de ambiente:
 1. Abra o arquivo `mobile.env`
 2. Altere o IP para o IP da sua máquina:
 ```env
-API_URL=http://[SEU_IP]:8080
+BASE_URL=http://[SEU_IP]:8080
 ```
 
 Para descobrir seu IP:
