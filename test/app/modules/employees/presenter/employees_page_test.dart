@@ -102,4 +102,31 @@ void main() {
       );
     });
   });
+
+  testWidgets(
+      'should render "CircularProgressiveIndicator" when call "GetEmployees"',
+      (tester) async {
+    await tester.runAsync(() async {
+      when(mockGetEmployees(const NoArgs())).thenAnswer(
+        (_) async {
+          await Future.delayed(const Duration(seconds: 1));
+
+          return resolve(EmployeeFixtures.employees());
+        },
+      );
+
+      await tester.pumpWidget(employeesPage);
+      await tester.pump();
+
+      expect(find.byType(CircularProgressIndicator), findsOneWidget);
+
+      await Future.delayed(const Duration(seconds: 1));
+      await tester.pump();
+
+      expect(find.byType(CircularProgressIndicator), findsNothing);
+
+      // GARENTEED THAT THE EMPLOYEES ARE SHOWING
+      expect(find.byType(ExpansionTile), findsWidgets);
+    });
+  });
 }
