@@ -67,6 +67,15 @@ void main() {
       await tester.pumpWidget(employeesPage);
       await tester.pumpAndSettle();
 
+      expect(
+        find.descendant(
+          of: find.byType(ExpansionTile),
+          matching: find.byWidgetPredicate(
+              (Widget widget) => widget is Text && widget.data == 'Roberto'),
+        ),
+        findsOneWidget,
+      );
+
       final Finder inputsFinder = find.byType(TextFormField);
       expect(inputsFinder, findsOneWidget);
 
