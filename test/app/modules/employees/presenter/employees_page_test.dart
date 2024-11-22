@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:desafio_mobile_betalent/app/core/domain/entities/either_of.dart';
 import 'package:desafio_mobile_betalent/app/core/domain/entities/usecase.dart';
 import 'package:desafio_mobile_betalent/app/di/dependency_injection.dart';
+import 'package:desafio_mobile_betalent/app/modules/employees/domain/entities/employee_failure.dart';
 import 'package:desafio_mobile_betalent/app/modules/employees/presenter/controller/bloc/employee_bloc.dart';
 import 'package:desafio_mobile_betalent/app/modules/employees/presenter/employees_page.dart';
 import 'package:flutter/material.dart';
@@ -127,6 +128,33 @@ void main() {
 
       // GARENTEED THAT THE EMPLOYEES ARE SHOWING
       expect(find.byType(ExpansionTile), findsWidgets);
+    });
+  });
+
+  testWidgets('should render "No employees found" when no employees are found',
+      (tester) async {
+    await tester.runAsync(() async {
+      when(mockGetEmployees(const NoArgs())).thenAnswer(
+        (_) async => resolve([]),
+      );
+
+      await tester.pumpWidget(employeesPage);
+      await tester.pump();
+
+      expect(find.text('No employees found'), findsOneWidget);
+    });
+  });
+
+  testWidgets('should render "Error" when call "GetEmployees"', (tester) async {
+    await tester.runAsync(() async {
+      when(mockGetEmployees(const NoArgs())).thenAnswer(
+        (_) async => reject(EmployeeFailure(message: 'Error')),
+      );
+
+      await tester.pumpWidget(employeesPage);
+      await tester.pump();
+
+      expect(find.text('Error'), findsOneWidget);
     });
   });
 }

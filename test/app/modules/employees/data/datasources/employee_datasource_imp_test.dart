@@ -28,4 +28,24 @@ void main() {
 
     expect(result, isA<List<Employee>>());
   });
+
+  test('should return a empty list when there are no employees', () async {
+    when(mockClientHttp.get(any)).thenAnswer(
+      (_) async => HttpResponseEntity<String>(
+        statusCode: 200,
+        data: '[]',
+      ),
+    );
+
+    final result = await employeeDatasourceImp.getEmployees();
+
+    expect(result, []);
+  });
+
+  test('should return a failure when the datasource fails', () async {
+    when(mockClientHttp.get(any)).thenThrow(Exception('Error'));
+
+    expect(() async => await employeeDatasourceImp.getEmployees(),
+        throwsA(isA<Exception>()));
+  });
 }
