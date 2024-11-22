@@ -154,7 +154,20 @@ void main() {
       await tester.pumpWidget(employeesPage);
       await tester.pump();
 
-      expect(find.text('Error'), findsOneWidget);
+      final findErrorSnackBar = find.byWidgetPredicate((Widget widget) {
+        if (widget is SnackBar) {
+          print((widget.content as Text).data);
+        }
+
+        return widget is SnackBar &&
+            widget.content is Text &&
+            (widget.content as Text).data!.contains('error');
+      });
+
+      expect(
+        findErrorSnackBar,
+        findsOneWidget,
+      );
     });
   });
 }
