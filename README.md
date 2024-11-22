@@ -1,13 +1,26 @@
 # BeTalent Mobile Challenge
 
-Este projeto é uma aplicação Flutter desenvolvida como parte do desafio mobile da BeTalent. A aplicação utiliza o json_rest_server para simular um backend e possui configurações específicas para execução em ambiente desktop e mobile.
+Este projeto é uma aplicação Flutter desenvolvida como parte do desafio mobile da BeTalent. A aplicação utiliza o json_rest_server para simular um backend e possui configurações específicas para execução em ambiente desktop e mobile. O projeto foi desenvolvido seguindo os princípios de Clean Architecture para garantir uma estrutura escalável, testável e de fácil manutenção.
 
 ## 📋 Sobre o Projeto
 
-O projeto foi desenvolvido utilizando:
+### Arquitetura e Padrões
+
+O projeto foi estruturado utilizando:
+- Clean Architecture para separação de responsabilidades e independência de frameworks
+- BLoC (Business Logic Component) como gerenciador de estado
+- Get_It para injeção de dependências
+- Princípios SOLID
+- Repository Pattern para abstração de fonte de dados
+- Service Pattern para regras de negócio
+- Design Patterns para solução de problemas comuns de desenvolvimento
+
+### Tecnologias Principais
 - Flutter versão 3.24.5
 - json_rest_server para backend
 - Configurações de ambiente (.env) para desktop e mobile
+- BLoC para gerenciamento de estado
+- Get_It para injeção de dependências
 
 ## 🔧 Pré-requisitos
 
@@ -134,6 +147,7 @@ flutter test
 - Certifique-se de que o json_rest_server está rodando antes de iniciar a aplicação
 - Verifique se está usando a versão correta do Flutter (3.24.5)
 - Em caso de problemas com a conexão, verifique se o IP no arquivo mobile.env está correto
+- Usei a fonte "Arimo" do google_fonts que é a mais se a semelha a Helvética (by carinha do grupo StackOverflow).
 
 ## 📱 Versão
 
