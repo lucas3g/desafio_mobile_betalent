@@ -2,24 +2,21 @@
   "version": "0.2.0",
   "configurations": [
       {
-          "name": "[dev] desafio_mobile_betalent",
+          "name": "[pc] desafio_mobile_betalent",
           "request": "launch",
           "type": "dart",
           "toolArgs": [
               "--dart-define-from-file",
-              "dev.env",
+              "pc.env",
           ]
       },
       {
-          "name": "[prod] desafio_mobile_betalent",
+          "name": "[mobile] desafio_mobile_betalent",
           "request": "launch",
           "type": "dart",
-          "args": [
-              "--release"
-          ],
           "toolArgs": [
               "--dart-define-from-file",
-              "prod.env",
+              "mobile.env",
           ]
       },
   ]
