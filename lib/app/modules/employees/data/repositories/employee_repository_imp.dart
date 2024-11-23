@@ -1,9 +1,10 @@
-import 'package:desafio_mobile_betalent/app/core/domain/entities/either_of.dart';
-import 'package:desafio_mobile_betalent/app/modules/employees/data/datasources/employee_datasource.dart';
-import 'package:desafio_mobile_betalent/app/modules/employees/domain/entities/employee.dart';
-import 'package:desafio_mobile_betalent/app/modules/employees/domain/entities/employee_failure.dart';
-import 'package:desafio_mobile_betalent/app/modules/employees/domain/repositories/employee_repository.dart';
 import 'package:injectable/injectable.dart';
+
+import '../../../../core/domain/entities/either_of.dart';
+import '../../domain/entities/employee.dart';
+import '../../domain/entities/employee_failure.dart';
+import '../../domain/repositories/employee_repository.dart';
+import '../datasources/employee_datasource.dart';
 
 @Injectable(as: EmployeeRepository)
 class EmployeeRepositoryImp implements EmployeeRepository {

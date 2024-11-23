@@ -1,7 +1,7 @@
-import 'package:desafio_mobile_betalent/app/modules/employees/presenter/employees_page.dart';
-import 'package:desafio_mobile_betalent/app/modules/splash/presenter/splash_page.dart';
 import 'package:flutter/material.dart';
 
+import '../../modules/employees/presenter/employees_page.dart';
+import '../../modules/splash/presenter/splash_page.dart';
 import '../domain/entities/named_routes.dart';
 import 'domain/entities/custom_transition.dart';
 import 'presenter/custom_page_builder.dart';

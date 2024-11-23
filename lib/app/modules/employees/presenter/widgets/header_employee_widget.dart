@@ -1,8 +1,9 @@
 import 'package:badges/badges.dart' as badges;
-import 'package:desafio_mobile_betalent/app/core/domain/entities/app_assets.dart';
-import 'package:desafio_mobile_betalent/app/shared/domain/entities/app_theme_constants.dart';
-import 'package:desafio_mobile_betalent/app/shared/extensions/build_context_extension.dart';
 import 'package:flutter/material.dart';
+
+import '../../../../core/domain/entities/app_assets.dart';
+import '../../../../shared/domain/entities/app_theme_constants.dart';
+import '../../../../shared/extensions/build_context_extension.dart';
 
 class HeaderEmployeeWidget extends StatelessWidget {
   const HeaderEmployeeWidget({super.key});

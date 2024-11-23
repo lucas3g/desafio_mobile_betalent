@@ -1,6 +1,6 @@
-import 'package:desafio_mobile_betalent/app/core/domain/vos/date_time_vo.dart';
-import 'package:desafio_mobile_betalent/app/core/domain/vos/id_vo.dart';
-import 'package:desafio_mobile_betalent/app/core/domain/vos/text_vo.dart';
+import '../../../../core/domain/vos/date_time_vo.dart';
+import '../../../../core/domain/vos/id_vo.dart';
+import '../../../../core/domain/vos/text_vo.dart';
 
 class Employee {
   IdVO _id;

@@ -1,16 +1,17 @@
 import 'dart:async';
 
-import 'package:desafio_mobile_betalent/app/di/dependency_injection.dart';
-import 'package:desafio_mobile_betalent/app/modules/employees/presenter/controller/bloc/employee_bloc.dart';
-import 'package:desafio_mobile_betalent/app/modules/employees/presenter/controller/bloc/employee_events.dart';
-import 'package:desafio_mobile_betalent/app/modules/employees/presenter/controller/bloc/employee_states.dart';
-import 'package:desafio_mobile_betalent/app/modules/employees/presenter/widgets/body_employee_widget.dart';
-import 'package:desafio_mobile_betalent/app/modules/employees/presenter/widgets/header_employee_widget.dart';
-import 'package:desafio_mobile_betalent/app/modules/employees/presenter/widgets/notification_drawer_widget.dart';
-import 'package:desafio_mobile_betalent/app/shared/components/app_snackbar.dart';
-import 'package:desafio_mobile_betalent/app/shared/components/spacer_height_widget.dart';
-import 'package:desafio_mobile_betalent/app/shared/domain/entities/app_theme_constants.dart';
 import 'package:flutter/material.dart';
+
+import '../../../di/dependency_injection.dart';
+import '../../../shared/components/app_snackbar.dart';
+import '../../../shared/components/spacer_height_widget.dart';
+import '../../../shared/domain/entities/app_theme_constants.dart';
+import 'controller/bloc/employee_bloc.dart';
+import 'controller/bloc/employee_events.dart';
+import 'controller/bloc/employee_states.dart';
+import 'widgets/body_employee_widget.dart';
+import 'widgets/header_employee_widget.dart';
+import 'widgets/notification_drawer_widget.dart';
 
 class EmployeesPage extends StatefulWidget {
   const EmployeesPage({super.key});

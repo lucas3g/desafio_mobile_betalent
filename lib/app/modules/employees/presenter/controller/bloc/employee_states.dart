@@ -1,4 +1,4 @@
-import 'package:desafio_mobile_betalent/app/modules/employees/domain/entities/employee.dart';
+import '../../../domain/entities/employee.dart';
 
 sealed class EmployeeStates {
   final List<Employee> employees;

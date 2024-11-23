@@ -1,11 +1,11 @@
-import 'package:desafio_mobile_betalent/app/modules/employees/presenter/widgets/content_expansion_tile_widget.dart';
-import 'package:desafio_mobile_betalent/app/shared/components/spacer_height_widget.dart';
-import 'package:desafio_mobile_betalent/app/shared/domain/entities/app_theme_constants.dart';
-import 'package:desafio_mobile_betalent/app/shared/extensions/build_context_extension.dart';
-import 'package:desafio_mobile_betalent/app/shared/utils/formatters.dart';
 import 'package:flutter/material.dart';
 
+import '../../../../shared/components/spacer_height_widget.dart';
+import '../../../../shared/domain/entities/app_theme_constants.dart';
+import '../../../../shared/extensions/build_context_extension.dart';
+import '../../../../shared/utils/formatters.dart';
 import '../../domain/entities/employee.dart';
+import 'content_expansion_tile_widget.dart';
 
 class ExpansionTileCardEmployeeWidget extends StatelessWidget {
   final Employee employee;

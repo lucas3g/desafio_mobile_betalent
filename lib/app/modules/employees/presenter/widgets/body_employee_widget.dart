@@ -1,13 +1,14 @@
-import 'package:desafio_mobile_betalent/app/modules/employees/presenter/controller/bloc/employee_bloc.dart';
-import 'package:desafio_mobile_betalent/app/modules/employees/presenter/controller/bloc/employee_events.dart';
-import 'package:desafio_mobile_betalent/app/modules/employees/presenter/controller/bloc/employee_states.dart';
-import 'package:desafio_mobile_betalent/app/modules/employees/presenter/widgets/expansion_tile_card_employee_widget.dart';
-import 'package:desafio_mobile_betalent/app/shared/components/spacer_height_widget.dart';
-import 'package:desafio_mobile_betalent/app/shared/components/text_form_field.dart';
-import 'package:desafio_mobile_betalent/app/shared/domain/entities/app_theme_constants.dart';
-import 'package:desafio_mobile_betalent/app/shared/extensions/build_context_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../../../shared/components/spacer_height_widget.dart';
+import '../../../../shared/components/text_form_field.dart';
+import '../../../../shared/domain/entities/app_theme_constants.dart';
+import '../../../../shared/extensions/build_context_extension.dart';
+import '../controller/bloc/employee_bloc.dart';
+import '../controller/bloc/employee_events.dart';
+import '../controller/bloc/employee_states.dart';
+import 'expansion_tile_card_employee_widget.dart';
 
 class BodyEmployeeWidget extends StatefulWidget {
   final EmployeeBloc employeeBloc;

@@ -1,7 +1,8 @@
-import 'package:desafio_mobile_betalent/app/core/domain/entities/app_assets.dart';
-import 'package:desafio_mobile_betalent/app/core/domain/entities/named_routes.dart';
-import 'package:desafio_mobile_betalent/app/shared/extensions/build_context_extension.dart';
 import 'package:flutter/material.dart';
+
+import '../../../core/domain/entities/app_assets.dart';
+import '../../../core/domain/entities/named_routes.dart';
+import '../../../shared/extensions/build_context_extension.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({super.key});

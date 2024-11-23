@@ -1,9 +1,10 @@
-import 'package:desafio_mobile_betalent/app/core/domain/entities/usecase.dart';
-import 'package:desafio_mobile_betalent/app/modules/employees/domain/usecases/get_employees.dart';
-import 'package:desafio_mobile_betalent/app/modules/employees/presenter/controller/bloc/employee_events.dart';
-import 'package:desafio_mobile_betalent/app/modules/employees/presenter/controller/bloc/employee_states.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
+
+import '../../../../../core/domain/entities/usecase.dart';
+import '../../../domain/usecases/get_employees.dart';
+import 'employee_events.dart';
+import 'employee_states.dart';
 
 @injectable
 class EmployeeBloc extends Bloc<EmployeeEvents, EmployeeStates> {

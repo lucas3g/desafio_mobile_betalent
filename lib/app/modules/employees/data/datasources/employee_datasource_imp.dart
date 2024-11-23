@@ -1,13 +1,14 @@
 import 'dart:convert';
 
-import 'package:desafio_mobile_betalent/app/core/data/clients/http/client_http.dart';
-import 'package:desafio_mobile_betalent/app/core/domain/entities/app_endpoints.dart';
-import 'package:desafio_mobile_betalent/app/core/domain/entities/response_entity.dart';
-import 'package:desafio_mobile_betalent/app/modules/employees/data/adapters/employee_adapter.dart';
-import 'package:desafio_mobile_betalent/app/modules/employees/data/datasources/employee_datasource.dart';
-import 'package:desafio_mobile_betalent/app/modules/employees/domain/entities/employee.dart';
-import 'package:desafio_mobile_betalent/app/modules/employees/domain/entities/employee_failure.dart';
 import 'package:injectable/injectable.dart';
+
+import '../../../../core/data/clients/http/client_http.dart';
+import '../../../../core/domain/entities/app_endpoints.dart';
+import '../../../../core/domain/entities/response_entity.dart';
+import '../../domain/entities/employee.dart';
+import '../../domain/entities/employee_failure.dart';
+import '../adapters/employee_adapter.dart';
+import 'employee_datasource.dart';
 
 @Injectable(as: EmployeeDatasource)
 class EmployeeDatasourceImp implements EmployeeDatasource {

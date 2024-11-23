@@ -1,9 +1,10 @@
-import 'package:desafio_mobile_betalent/app/core/domain/entities/either_of.dart';
-import 'package:desafio_mobile_betalent/app/core/domain/entities/failure.dart';
-import 'package:desafio_mobile_betalent/app/core/domain/entities/usecase.dart';
-import 'package:desafio_mobile_betalent/app/modules/employees/domain/entities/employee.dart';
-import 'package:desafio_mobile_betalent/app/modules/employees/domain/repositories/employee_repository.dart';
 import 'package:injectable/injectable.dart';
+
+import '../../../../core/domain/entities/either_of.dart';
+import '../../../../core/domain/entities/failure.dart';
+import '../../../../core/domain/entities/usecase.dart';
+import '../entities/employee.dart';
+import '../repositories/employee_repository.dart';
 
 @injectable
 class GetEmployees implements UseCase<List<Employee>, NoArgs> {
