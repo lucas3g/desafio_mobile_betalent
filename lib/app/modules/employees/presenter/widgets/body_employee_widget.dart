@@ -144,18 +144,8 @@ class _BodyEmployeeWidgetState extends State<BodyEmployeeWidget> {
                             itemBuilder: (context, index) {
                               final employee = employees[index];
 
-                              return Container(
-                                decoration: BoxDecoration(
-                                  border: Border(
-                                    bottom: BorderSide(
-                                      color: context.colorScheme.onSurface
-                                          .withOpacity(0.1),
-                                    ),
-                                  ),
-                                ),
-                                child: ExpansionTileCardEmployeeWidget(
-                                  employee: employee,
-                                ),
+                              return ExpansionTileCardEmployeeWidget(
+                                employee: employee,
                               );
                             },
                           ),

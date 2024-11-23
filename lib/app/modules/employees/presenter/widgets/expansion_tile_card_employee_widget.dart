@@ -17,59 +17,68 @@ class ExpansionTileCardEmployeeWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Theme(
-      data: Theme.of(context).copyWith(
-        dividerColor: Colors.transparent,
-      ),
-      child: ExpansionTile(
-        collapsedIconColor: context.colorScheme.primary,
-        tilePadding: const EdgeInsets.all(
-          AppThemeConstants.mediumBorderRadius,
+    return Container(
+      decoration: BoxDecoration(
+        border: Border(
+          bottom: BorderSide(
+            color: context.colorScheme.onSurface.withOpacity(0.1),
+          ),
         ),
-        title: Row(
-          children: [
-            CircleAvatar(
-              radius: 18,
-              backgroundImage: NetworkImage(employee.image.value),
-            ),
-            const SizedBox(width: AppThemeConstants.spacingRegular20),
-            Expanded(
-              child: Text(
-                employee.name.value,
-                style: context.textTheme.titleLarge?.copyWith(
-                  fontSize: AppThemeConstants.h3FontSize,
-                  fontWeight: FontWeight.w400,
+      ),
+      child: Theme(
+        data: Theme.of(context).copyWith(
+          dividerColor: Colors.transparent,
+        ),
+        child: ExpansionTile(
+          collapsedIconColor: context.colorScheme.primary,
+          tilePadding: const EdgeInsets.all(
+            AppThemeConstants.mediumBorderRadius,
+          ),
+          title: Row(
+            children: [
+              CircleAvatar(
+                radius: 18,
+                backgroundImage: NetworkImage(employee.image.value),
+              ),
+              const SizedBox(width: AppThemeConstants.spacingRegular20),
+              Expanded(
+                child: Text(
+                  employee.name.value,
+                  style: context.textTheme.titleLarge?.copyWith(
+                    fontSize: AppThemeConstants.h3FontSize,
+                    fontWeight: FontWeight.w400,
+                  ),
                 ),
+              ),
+            ],
+          ),
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(
+                left: AppThemeConstants.mediumPadding,
+                right: AppThemeConstants.padding,
+                bottom: AppThemeConstants.padding,
+              ),
+              child: Column(
+                children: [
+                  const SpacerHeight(),
+                  ContentExpansionTileWidget(
+                    title: 'Cargo',
+                    value: employee.job.value,
+                  ),
+                  ContentExpansionTileWidget(
+                    title: 'Data de admissão',
+                    value: employee.admissionDate.value.formatDate(),
+                  ),
+                  ContentExpansionTileWidget(
+                    title: 'Telefone',
+                    value: employee.phone.value.formatPhone(),
+                  ),
+                ],
               ),
             ),
           ],
         ),
-        children: [
-          Padding(
-            padding: const EdgeInsets.only(
-              left: AppThemeConstants.mediumPadding,
-              right: AppThemeConstants.padding,
-              bottom: AppThemeConstants.padding,
-            ),
-            child: Column(
-              children: [
-                const SpacerHeight(),
-                ContentExpansionTileWidget(
-                  title: 'Cargo',
-                  value: employee.job.value,
-                ),
-                ContentExpansionTileWidget(
-                  title: 'Data de admissão',
-                  value: employee.admissionDate.value.formatDate(),
-                ),
-                ContentExpansionTileWidget(
-                  title: 'Telefone',
-                  value: employee.phone.value.formatPhone(),
-                ),
-              ],
-            ),
-          ),
-        ],
       ),
     );
   }
