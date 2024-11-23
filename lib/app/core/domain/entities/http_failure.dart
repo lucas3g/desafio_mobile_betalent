@@ -8,7 +8,7 @@ class HttpFailure extends AppFailure {
     String? message,
     this.error,
     this.statusCode,
-  }) : super(message ?? 'Conexão com o servidor perdida!');
+  }) : super(message ?? 'Connection with the server lost!');
 
   @override
   bool operator ==(Object other) {
