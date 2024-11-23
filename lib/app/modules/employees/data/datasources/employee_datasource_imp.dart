@@ -1,5 +1,8 @@
 import 'dart:convert';
 
+import 'package:desafio_mobile_betalent/app/core/domain/entities/failure.dart';
+import 'package:desafio_mobile_betalent/app/core/domain/entities/http_failure.dart';
+import 'package:desafio_mobile_betalent/app/core/domain/entities/network_failure.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../../../core/data/clients/http/client_http.dart';
@@ -39,7 +42,18 @@ class EmployeeDatasourceImp implements EmployeeDatasource {
 
       return employees;
     } catch (e) {
-      rethrow;
+      throw _handleErrors(e, 'Error to get employees');
     }
+  }
+
+  AppFailure _handleErrors(dynamic error, String origin) {
+    if (error is NetworkFailure) {
+      return error;
+    }
+    if (error is HttpFailure) {
+      return EmployeeFailure(message: error.message);
+    }
+
+    return EmployeeFailure(message: origin);
   }
 }

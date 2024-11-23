@@ -1,3 +1,4 @@
+import 'package:desafio_mobile_betalent/app/shared/components/loading_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -54,9 +55,7 @@ class _BodyEmployeeWidgetState extends State<BodyEmployeeWidget> {
               bloc: widget.employeeBloc,
               builder: (context, state) {
                 if (state is EmployeeLoading) {
-                  return const Center(
-                    child: CircularProgressIndicator(),
-                  );
+                  return const LoadingWidget();
                 }
 
                 if (state is EmployeeLoaded) {
