@@ -4,6 +4,7 @@ import 'package:desafio_mobile_betalent/app/modules/employees/domain/entities/em
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 
+import '../../../../../fixtures/base_url_fixtures.dart';
 import '../../../../../fixtures/employee_fixtures.dart';
 import '../../../../../mocks/mocks.mocks.dart';
 
@@ -17,7 +18,8 @@ void main() {
   });
 
   test('should return a list of employees', () async {
-    when(mockClientHttp.get(any)).thenAnswer(
+    when(mockClientHttp.get(argThat(equals(BaseUrlFixtures.completeUrl))))
+        .thenAnswer(
       (_) async => HttpResponseEntity<String>(
         statusCode: 200,
         data: EmployeeFixtures.employeesJson(),
@@ -30,7 +32,8 @@ void main() {
   });
 
   test('should return a empty list when there are no employees', () async {
-    when(mockClientHttp.get(any)).thenAnswer(
+    when(mockClientHttp.get(argThat(equals(BaseUrlFixtures.completeUrl))))
+        .thenAnswer(
       (_) async => HttpResponseEntity<String>(
         statusCode: 200,
         data: '[]',
@@ -43,7 +46,8 @@ void main() {
   });
 
   test('should return a failure when the datasource fails', () async {
-    when(mockClientHttp.get(any)).thenThrow(Exception('Error'));
+    when(mockClientHttp.get(argThat(equals(BaseUrlFixtures.completeUrl))))
+        .thenThrow(Exception('Error'));
 
     expect(() async => await employeeDatasourceImp.getEmployees(),
         throwsA(isA<Exception>()));
