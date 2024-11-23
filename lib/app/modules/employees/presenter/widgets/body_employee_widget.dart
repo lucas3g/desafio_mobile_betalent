@@ -120,13 +120,18 @@ class _BodyEmployeeWidgetState extends State<BodyEmployeeWidget> {
                                   ),
                                 ],
                               ),
-                              const Padding(
-                                padding: EdgeInsets.only(
-                                  right: AppThemeConstants.halfPadding,
-                                ),
-                                child: Icon(
-                                  Icons.circle,
-                                  size: 10,
+                              const Expanded(
+                                child: Align(
+                                  alignment: Alignment.centerRight,
+                                  child: Padding(
+                                    padding: EdgeInsets.only(
+                                      right: AppThemeConstants.halfPadding,
+                                    ),
+                                    child: Icon(
+                                      Icons.circle,
+                                      size: 10,
+                                    ),
+                                  ),
                                 ),
                               )
                             ],
@@ -141,14 +146,12 @@ class _BodyEmployeeWidgetState extends State<BodyEmployeeWidget> {
 
                               return Container(
                                 decoration: BoxDecoration(
-                                  border: employees.length != index + 1
-                                      ? Border(
-                                          bottom: BorderSide(
-                                            color: context.colorScheme.onSurface
-                                                .withOpacity(0.1),
-                                          ),
-                                        )
-                                      : null,
+                                  border: Border(
+                                    bottom: BorderSide(
+                                      color: context.colorScheme.onSurface
+                                          .withOpacity(0.1),
+                                    ),
+                                  ),
                                 ),
                                 child: ExpansionTileCardEmployeeWidget(
                                   employee: employee,
