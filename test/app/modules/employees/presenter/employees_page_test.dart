@@ -46,7 +46,7 @@ void main() {
       );
 
       await tester.pumpWidget(employeesPage);
-      await tester.pumpAndSettle();
+      await tester.pump();
 
       verify(mockGetEmployees(const NoArgs())).called(1);
 
@@ -66,7 +66,7 @@ void main() {
       );
 
       await tester.pumpWidget(employeesPage);
-      await tester.pumpAndSettle();
+      await tester.pump();
 
       expect(
         find.descendant(
@@ -152,20 +152,19 @@ void main() {
       );
 
       await tester.pumpWidget(employeesPage);
-      await tester.pump();
 
-      final findErrorSnackBar = find.byWidgetPredicate((Widget widget) {
-        if (widget is SnackBar) {
-          print((widget.content as Text).data);
-        }
-
-        return widget is SnackBar &&
-            widget.content is Text &&
-            (widget.content as Text).data!.contains('error');
-      });
+      // WAITING FOR THE SNACKBAR TO SHOW
+      await tester.pump(Durations.medium1);
+      await tester.pump(Durations.medium1);
+      await tester.pump(Durations.medium1);
+      await tester.pump(Durations.medium1);
 
       expect(
-        findErrorSnackBar,
+        find.descendant(
+          of: find.byType(SnackBar),
+          matching: find.byWidgetPredicate(
+              (Widget widget) => widget is Text && widget.data == 'Error'),
+        ),
         findsOneWidget,
       );
     });
