@@ -62,11 +62,6 @@ class DioClientHttpImpl implements ClientHttp {
   @override
   Future<HttpResponseEntity<T>> get<T>(String path) async {
     try {
-      if (_dio.options.baseUrl.contains('elinfo.atlassian.net')) {
-        _dio.interceptors
-            .add(InterceptorsWrapper(onRequest: requestInterceptor));
-      }
-
       final String url = path;
       final Response<T> dioResponse = await _dio.get(url);
       return HttpResponseEntity<T>(
@@ -92,24 +87,19 @@ class DioClientHttpImpl implements ClientHttp {
     if (e is DioException) {
       final Map<Object, AppFailure> errorMap = <Object, AppFailure>{
         SocketException: NetworkFailure(
-          'Conexão com o servidor perdida!',
+          'Connection with the server lost!',
         ),
         DioExceptionType.connectionError: NetworkFailure(
-          'Conexão com o servidor perdida!',
+          'Connection with the server lost!',
         ),
         DioExceptionType.connectionTimeout: NetworkFailure(
-          'Tempo de conexão com o servidor esgotado!',
+          'Timeout connection with the server!',
         ),
-        DioExceptionType.badResponse: e.response?.statusCode == 401
-            ? HttpFailure(
-                message: 'Usuário ou senha inválidos!',
-                statusCode: e.response?.statusCode,
-              )
-            : HttpFailure(
-                message: e.message,
-                error: e.response?.data,
-                statusCode: e.response?.statusCode,
-              ),
+        DioExceptionType.badResponse: HttpFailure(
+          message: e.message,
+          error: e.response?.data,
+          statusCode: e.response?.statusCode,
+        ),
       };
 
       return errorMap[e.type] ??
