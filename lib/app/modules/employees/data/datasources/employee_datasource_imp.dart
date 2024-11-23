@@ -48,7 +48,7 @@ class EmployeeDatasourceImp implements EmployeeDatasource {
 
   AppFailure _handleErrors(dynamic error, String origin) {
     if (error is NetworkFailure) {
-      return error;
+      return EmployeeFailure(message: error.message);
     }
     if (error is HttpFailure) {
       return EmployeeFailure(message: error.message);

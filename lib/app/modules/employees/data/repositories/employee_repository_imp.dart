@@ -22,7 +22,7 @@ class EmployeeRepositoryImp implements EmployeeRepository {
     } on EmployeeFailure catch (e) {
       return reject(e);
     } catch (e) {
-      return reject(EmployeeFailure.unExpected());
+      return reject(EmployeeFailure(message: 'Error to get employees'));
     }
   }
 }
