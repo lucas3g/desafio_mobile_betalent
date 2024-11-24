@@ -1,6 +1,7 @@
 import 'package:desafio_mobile_betalent/app/core/domain/entities/response_entity.dart';
 import 'package:desafio_mobile_betalent/app/modules/employees/data/datasources/employee_datasource_imp.dart';
 import 'package:desafio_mobile_betalent/app/modules/employees/domain/entities/employee.dart';
+import 'package:desafio_mobile_betalent/app/modules/employees/domain/entities/employee_failure.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 
@@ -47,9 +48,9 @@ void main() {
 
   test('should return a failure when the datasource fails', () async {
     when(mockClientHttp.get(argThat(equals(BaseUrlFixtures.completeUrl))))
-        .thenThrow(Exception('Error'));
+        .thenThrow(EmployeeFailure(message: 'Error'));
 
     expect(() async => await employeeDatasourceImp.getEmployees(),
-        throwsA(isA<Exception>()));
+        throwsA(isA<EmployeeFailure>()));
   });
 }
