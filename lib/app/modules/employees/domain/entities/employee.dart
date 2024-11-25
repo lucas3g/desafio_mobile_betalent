@@ -1,8 +1,10 @@
+import 'package:desafio_mobile_betalent/app/core/domain/entities/app_equatable.dart';
+
 import '../../../../core/domain/vos/date_time_vo.dart';
 import '../../../../core/domain/vos/id_vo.dart';
 import '../../../../core/domain/vos/text_vo.dart';
 
-class Employee {
+class Employee with AppEquatable {
   IdVO _id;
   TextVO _name;
   TextVO _job;
@@ -43,25 +45,5 @@ class Employee {
         _image = TextVO(image);
 
   @override
-  bool operator ==(Object other) {
-    if (identical(this, other)) return true;
-
-    return other is Employee &&
-        other._id == _id &&
-        other._name == _name &&
-        other._job == _job &&
-        other._admissionDate == _admissionDate &&
-        other._phone == _phone &&
-        other._image == _image;
-  }
-
-  @override
-  int get hashCode {
-    return _id.hashCode ^
-        _name.hashCode ^
-        _job.hashCode ^
-        _admissionDate.hashCode ^
-        _phone.hashCode ^
-        _image.hashCode;
-  }
+  List<Object?> get props => [_id, _name, _job, _admissionDate, _phone, _image];
 }

@@ -1,6 +1,6 @@
 part of 'employee_bloc.dart';
 
-sealed class EmployeeStates {
+sealed class EmployeeStates with AppEquatable {
   final List<Employee> employees;
   final String filter;
 
@@ -36,29 +36,27 @@ sealed class EmployeeStates {
             employee.phone.value.contains(filter))
         .toList();
   }
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is EmployeeStates &&
-          runtimeType == other.runtimeType &&
-          employees == other.employees &&
-          filter == other.filter;
-
-  @override
-  int get hashCode => employees.hashCode ^ filter.hashCode;
 }
 
 class EmployeeInitial extends EmployeeStates {
   EmployeeInitial() : super(employees: [], filter: '');
+
+  @override
+  List<Object?> get props => [employees, filter];
 }
 
 class EmployeeLoading extends EmployeeStates {
   EmployeeLoading({required super.employees, required super.filter});
+
+  @override
+  List<Object?> get props => [employees, filter];
 }
 
 class EmployeeLoaded extends EmployeeStates {
   EmployeeLoaded({required super.employees, required super.filter});
+
+  @override
+  List<Object?> get props => [employees, filter];
 }
 
 class EmployeeError extends EmployeeStates {
@@ -71,14 +69,5 @@ class EmployeeError extends EmployeeStates {
   });
 
   @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is EmployeeError &&
-          runtimeType == other.runtimeType &&
-          message == other.message &&
-          employees == other.employees &&
-          filter == other.filter;
-
-  @override
-  int get hashCode => message.hashCode ^ employees.hashCode ^ filter.hashCode;
+  List<Object?> get props => [message, employees, filter];
 }

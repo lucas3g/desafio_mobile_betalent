@@ -1,20 +1,13 @@
+import 'package:desafio_mobile_betalent/app/core/domain/entities/app_equatable.dart';
+
 import '../../../../core/domain/entities/failure.dart';
 
-class EmployeeFailure extends AppFailure {
+class EmployeeFailure extends AppFailure with AppEquatable {
   EmployeeFailure({String? message})
       : super(message ?? 'Employee error message');
 
-  @override
-  bool operator ==(Object other) {
-    if (identical(this, other)) {
-      return true;
-    }
-
-    return other is EmployeeFailure && other.message == message;
-  }
-
-  @override
-  int get hashCode => message.hashCode;
-
   static unExpected() => EmployeeFailure(message: 'Unexpected error');
+
+  @override
+  List<Object?> get props => [message];
 }

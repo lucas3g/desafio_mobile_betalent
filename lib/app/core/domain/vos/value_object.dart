@@ -1,6 +1,8 @@
+import 'package:desafio_mobile_betalent/app/core/domain/entities/app_equatable.dart';
+
 import '../entities/either_of.dart';
 
-abstract class ValueObject<T> {
+abstract class ValueObject<T> with AppEquatable {
   final T value;
 
   const ValueObject(this.value);
@@ -8,17 +10,10 @@ abstract class ValueObject<T> {
   EitherOf<String, ValueObject<T>> validate([Object? object]);
 
   @override
-  bool operator ==(covariant ValueObject<T> other) {
-    if (identical(this, other)) return true;
-
-    return other.value == value;
-  }
-
-  @override
-  int get hashCode => value.hashCode;
-
-  @override
   String toString() {
     return '$runtimeType: $value';
   }
+
+  @override
+  List<Object?> get props => [value];
 }

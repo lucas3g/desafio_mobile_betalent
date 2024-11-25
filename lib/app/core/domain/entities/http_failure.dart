@@ -1,6 +1,8 @@
+import 'package:desafio_mobile_betalent/app/core/domain/entities/app_equatable.dart';
+
 import 'failure.dart';
 
-class HttpFailure extends AppFailure {
+class HttpFailure extends AppFailure with AppEquatable {
   final dynamic error;
   final int? statusCode;
 
@@ -11,16 +13,5 @@ class HttpFailure extends AppFailure {
   }) : super(message ?? 'Connection with the server lost!');
 
   @override
-  bool operator ==(Object other) {
-    if (identical(this, other)) {
-      return true;
-    }
-
-    return other is HttpFailure &&
-        other.error == error &&
-        other.statusCode == statusCode;
-  }
-
-  @override
-  int get hashCode => error.hashCode ^ statusCode.hashCode;
+  List<Object?> get props => [message, error, statusCode];
 }

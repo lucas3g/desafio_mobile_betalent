@@ -1,25 +1,12 @@
 part of 'employee_bloc.dart';
 
-sealed class EmployeeEvents {
+sealed class EmployeeEvents with AppEquatable {
   const EmployeeEvents();
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is EmployeeEvents && runtimeType == other.runtimeType;
-
-  @override
-  int get hashCode => 0;
 }
 
 class GetEmployeesEvent extends EmployeeEvents {
   @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is GetEmployeesEvent && runtimeType == other.runtimeType;
-
-  @override
-  int get hashCode => 0;
+  List<Object?> get props => [];
 }
 
 class FilterEmployeesEvent extends EmployeeEvents {
@@ -28,12 +15,5 @@ class FilterEmployeesEvent extends EmployeeEvents {
   FilterEmployeesEvent(this.filter);
 
   @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is FilterEmployeesEvent &&
-          filter == other.filter &&
-          runtimeType == other.runtimeType;
-
-  @override
-  int get hashCode => filter.hashCode;
+  List<Object?> get props => [filter];
 }

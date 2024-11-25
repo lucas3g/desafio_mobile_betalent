@@ -1,17 +1,10 @@
+import 'package:desafio_mobile_betalent/app/core/domain/entities/app_equatable.dart';
+
 import 'failure.dart';
 
-class NetworkFailure extends AppFailure {
+class NetworkFailure extends AppFailure with AppEquatable {
   NetworkFailure(super.message);
 
   @override
-  bool operator ==(Object other) {
-    if (identical(this, other)) {
-      return true;
-    }
-
-    return other is NetworkFailure && other.message == message;
-  }
-
-  @override
-  int get hashCode => message.hashCode;
+  List<Object?> get props => [message];
 }
