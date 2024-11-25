@@ -29,7 +29,6 @@ sealed class EmployeeStates {
     if (filter.isEmpty) {
       return employees;
     }
-
     return employees
         .where((employee) =>
             employee.name.value.toLowerCase().contains(filter.toLowerCase()) ||
@@ -41,46 +40,25 @@ sealed class EmployeeStates {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is EmployeeStates && runtimeType == other.runtimeType;
+      other is EmployeeStates &&
+          runtimeType == other.runtimeType &&
+          employees == other.employees &&
+          filter == other.filter;
 
   @override
-  int get hashCode => 0;
+  int get hashCode => employees.hashCode ^ filter.hashCode;
 }
 
 class EmployeeInitial extends EmployeeStates {
   EmployeeInitial() : super(employees: [], filter: '');
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is EmployeeInitial && runtimeType == other.runtimeType;
-
-  @override
-  int get hashCode => 0;
 }
 
 class EmployeeLoading extends EmployeeStates {
   EmployeeLoading({required super.employees, required super.filter});
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is EmployeeLoading && runtimeType == other.runtimeType;
-
-  @override
-  int get hashCode => 0;
 }
 
 class EmployeeLoaded extends EmployeeStates {
   EmployeeLoaded({required super.employees, required super.filter});
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is EmployeeLoaded && runtimeType == other.runtimeType;
-
-  @override
-  int get hashCode => 0;
 }
 
 class EmployeeError extends EmployeeStates {
@@ -97,8 +75,10 @@ class EmployeeError extends EmployeeStates {
       identical(this, other) ||
       other is EmployeeError &&
           runtimeType == other.runtimeType &&
-          message == other.message;
+          message == other.message &&
+          employees == other.employees &&
+          filter == other.filter;
 
   @override
-  int get hashCode => 0;
+  int get hashCode => message.hashCode ^ employees.hashCode ^ filter.hashCode;
 }

@@ -21,13 +21,11 @@ void main() {
 
   blocTest<EmployeeBloc, EmployeeStates>(
     'Should emit [EmployeeLoading, EmployeeLoaded] when usecase is called',
-    setUp: () {
-      when(mockGetEmployees(const NoArgs()))
-          .thenAnswer((_) async => resolve(EmployeeFixtures.employees()));
-    },
+    setUp: () => when(mockGetEmployees(const NoArgs()))
+        .thenAnswer((_) async => resolve(EmployeeFixtures.employees())),
     build: () => bloc,
     act: (bloc) => bloc.add(GetEmployeesEvent()),
-    expect: () => [
+    expect: () => <EmployeeStates>[
       EmployeeLoading(
         employees: <Employee>[],
         filter: '',
@@ -38,13 +36,11 @@ void main() {
 
   blocTest<EmployeeBloc, EmployeeStates>(
     'Should emit [EmployeeLoading, EmployeeError] when usecase is called',
-    setUp: () {
-      when(mockGetEmployees(const NoArgs()))
-          .thenAnswer((_) async => reject(EmployeeFailure(message: 'Error')));
-    },
+    setUp: () => when(mockGetEmployees(const NoArgs()))
+        .thenAnswer((_) async => reject(EmployeeFailure(message: 'Error'))),
     build: () => bloc,
     act: (bloc) => bloc.add(GetEmployeesEvent()),
-    expect: () => [
+    expect: () => <EmployeeStates>[
       EmployeeLoading(
         employees: <Employee>[],
         filter: '',
