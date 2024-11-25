@@ -7,13 +7,22 @@ import '../../../../shared/utils/formatters.dart';
 import '../../domain/entities/employee.dart';
 import 'content_expansion_tile_widget.dart';
 
-class ExpansionTileCardEmployeeWidget extends StatelessWidget {
+class ExpansionTileCardEmployeeWidget extends StatefulWidget {
   final Employee employee;
 
   const ExpansionTileCardEmployeeWidget({
     super.key,
     required this.employee,
   });
+
+  @override
+  State<ExpansionTileCardEmployeeWidget> createState() =>
+      _ExpansionTileCardEmployeeWidgetState();
+}
+
+class _ExpansionTileCardEmployeeWidgetState
+    extends State<ExpansionTileCardEmployeeWidget> {
+  bool _expanded = false;
 
   @override
   Widget build(BuildContext context) {
@@ -34,16 +43,29 @@ class ExpansionTileCardEmployeeWidget extends StatelessWidget {
           tilePadding: const EdgeInsets.all(
             AppThemeConstants.mediumBorderRadius,
           ),
+          trailing: AnimatedRotation(
+            turns: _expanded ? 0.5 : 0.0,
+            duration: const Duration(milliseconds: 200),
+            child: const Icon(
+              Icons.keyboard_arrow_down,
+              size: 32,
+            ),
+          ),
+          onExpansionChanged: (bool expanding) {
+            setState(() {
+              _expanded = expanding;
+            });
+          },
           title: Row(
             children: [
               CircleAvatar(
                 radius: 18,
-                backgroundImage: NetworkImage(employee.image.value),
+                backgroundImage: NetworkImage(widget.employee.image.value),
               ),
               const SizedBox(width: AppThemeConstants.spacingRegular20),
               Expanded(
                 child: Text(
-                  employee.name.value,
+                  widget.employee.name.value,
                   style: context.textTheme.titleLarge?.copyWith(
                     fontSize: AppThemeConstants.h3FontSize,
                     fontWeight: FontWeight.w400,
@@ -64,15 +86,15 @@ class ExpansionTileCardEmployeeWidget extends StatelessWidget {
                   const SpacerHeight(),
                   ContentExpansionTileWidget(
                     title: 'Cargo',
-                    value: employee.job.value,
+                    value: widget.employee.job.value,
                   ),
                   ContentExpansionTileWidget(
                     title: 'Data de admissão',
-                    value: employee.admissionDate.value.formatDate(),
+                    value: widget.employee.admissionDate.value.formatDate(),
                   ),
                   ContentExpansionTileWidget(
                     title: 'Telefone',
-                    value: employee.phone.value.formatPhone(),
+                    value: widget.employee.phone.value.formatPhone(),
                   ),
                 ],
               ),
