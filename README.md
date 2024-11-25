@@ -36,8 +36,8 @@ Antes de começar, você precisará ter instalado em sua máquina:
 ### 1. Clonando o Repositório
 
 ```bash
-git clone [https://github.com/lucas3g/desafio_mobile_betalent.git]
-cd [desafio_mobile_betalent]
+git clone https://github.com/lucas3g/desafio_mobile_betalent.git
+cd desafio_mobile_betalent
 ```
 
 ### 2. Instalando Dependências
@@ -131,10 +131,18 @@ Para rodar os testes do projeto:
 flutter test
 ```
 
+### 8. Problemas com Arquivos Gerados
+
+Caso encontre problemas com arquivos gerados ou precise regenerá-los:
+
+```bash
+dart run build_runner build --delete-conflicting-outputs
+```
+
 ## 🔍 Estrutura do Projeto
 
 ```
-[desafio_mobile_betalent]/
+desafio_mobile_betalent/
 ├── lib/
 ├── test/
 ├── pc.env
@@ -147,7 +155,7 @@ flutter test
 - Certifique-se de que o json_rest_server está rodando antes de iniciar a aplicação
 - Verifique se está usando a versão correta do Flutter (3.24.5)
 - Em caso de problemas com a conexão, verifique se o IP no arquivo mobile.env está correto
-- Usei a fonte "Arimo" do google_fonts que é a mais semelhante a Helvética (by carinha do grupo StackOverflow).
+- Usei a fonte "Arimo" do google_fonts que é a mais semelhante a Helvética (by carinha do grupo StackOverflow)
 
 ## 📱 Versão
 
@@ -156,4 +164,3 @@ flutter test
 ## ✨ Autor
 
 Lucas Emanuel Silva - [lucassilva080397@gmail.com]
-
