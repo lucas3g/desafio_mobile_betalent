@@ -1,7 +1,7 @@
-import 'package:desafio_mobile_betalent/app/shared/components/loading_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../shared/components/loading_widget.dart';
 import '../../../../shared/components/spacer_height_widget.dart';
 import '../../../../shared/components/text_form_field.dart';
 import '../../../../shared/domain/entities/app_theme_constants.dart';

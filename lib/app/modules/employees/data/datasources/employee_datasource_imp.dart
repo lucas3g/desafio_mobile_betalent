@@ -1,12 +1,12 @@
 import 'dart:convert';
 
-import 'package:desafio_mobile_betalent/app/core/domain/entities/failure.dart';
-import 'package:desafio_mobile_betalent/app/core/domain/entities/http_failure.dart';
-import 'package:desafio_mobile_betalent/app/core/domain/entities/network_failure.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../../../core/data/clients/http/client_http.dart';
 import '../../../../core/domain/entities/app_endpoints.dart';
+import '../../../../core/domain/entities/failure.dart';
+import '../../../../core/domain/entities/http_failure.dart';
+import '../../../../core/domain/entities/network_failure.dart';
 import '../../../../core/domain/entities/response_entity.dart';
 import '../../domain/entities/employee.dart';
 import '../../domain/entities/employee_failure.dart';

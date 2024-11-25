@@ -1,5 +1,4 @@
-import 'package:desafio_mobile_betalent/app/core/domain/entities/app_equatable.dart';
-
+import 'app_equatable.dart';
 import 'either_of.dart';
 import 'failure.dart';
 

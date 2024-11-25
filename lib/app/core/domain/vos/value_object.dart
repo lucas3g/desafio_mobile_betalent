@@ -1,5 +1,4 @@
-import 'package:desafio_mobile_betalent/app/core/domain/entities/app_equatable.dart';
-
+import '../entities/app_equatable.dart';
 import '../entities/either_of.dart';
 
 abstract class ValueObject<T> with AppEquatable {

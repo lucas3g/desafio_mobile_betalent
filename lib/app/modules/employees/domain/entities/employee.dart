@@ -1,5 +1,4 @@
-import 'package:desafio_mobile_betalent/app/core/domain/entities/app_equatable.dart';
-
+import '../../../../core/domain/entities/app_equatable.dart';
 import '../../../../core/domain/vos/date_time_vo.dart';
 import '../../../../core/domain/vos/id_vo.dart';
 import '../../../../core/domain/vos/text_vo.dart';

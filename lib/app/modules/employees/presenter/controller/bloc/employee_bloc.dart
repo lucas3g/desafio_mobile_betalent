@@ -1,9 +1,9 @@
-import 'package:desafio_mobile_betalent/app/modules/employees/domain/entities/employee.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../../../../core/domain/entities/app_equatable.dart';
 import '../../../../../core/domain/entities/usecase.dart';
+import '../../../domain/entities/employee.dart';
 import '../../../domain/usecases/get_employees.dart';
 
 part 'employee_events.dart';
