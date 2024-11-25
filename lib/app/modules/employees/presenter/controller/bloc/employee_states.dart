@@ -37,18 +37,60 @@ sealed class EmployeeStates {
             employee.phone.value.contains(filter))
         .toList();
   }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+
+    return other is EmployeeStates &&
+        other.employees == employees &&
+        other.filter == filter;
+  }
+
+  @override
+  int get hashCode => 0;
 }
 
 class EmployeeInitial extends EmployeeStates {
   EmployeeInitial() : super(employees: [], filter: '');
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+
+    return other is EmployeeInitial;
+  }
+
+  @override
+  int get hashCode => 0;
 }
 
 class EmployeeLoading extends EmployeeStates {
   EmployeeLoading({required super.employees, required super.filter});
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+
+    return other is EmployeeLoading;
+  }
+
+  @override
+  int get hashCode => 0;
 }
 
 class EmployeeLoaded extends EmployeeStates {
   EmployeeLoaded({required super.employees, required super.filter});
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+
+    return other is EmployeeLoaded;
+  }
+
+  @override
+  int get hashCode => 0;
 }
 
 class EmployeeError extends EmployeeStates {
@@ -59,4 +101,14 @@ class EmployeeError extends EmployeeStates {
     required super.employees,
     required super.filter,
   });
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+
+    return other is EmployeeError && other.message == message;
+  }
+
+  @override
+  int get hashCode => 0;
 }
