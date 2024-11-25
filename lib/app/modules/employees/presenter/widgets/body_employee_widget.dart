@@ -101,7 +101,7 @@ class _BodyEmployeeWidgetState extends State<BodyEmployeeWidget> {
                                     'Foto',
                                     style:
                                         context.textTheme.titleLarge?.copyWith(
-                                      fontSize: AppThemeConstants.h2FontSize,
+                                      fontSize: AppThemeConstants.h3FontSize,
                                       fontWeight: FontWeight.w600,
                                     ),
                                   ),
@@ -112,7 +112,7 @@ class _BodyEmployeeWidgetState extends State<BodyEmployeeWidget> {
                                     'Nome',
                                     style:
                                         context.textTheme.titleLarge?.copyWith(
-                                      fontSize: AppThemeConstants.h2FontSize,
+                                      fontSize: AppThemeConstants.h3FontSize,
                                       fontWeight: FontWeight.w600,
                                     ),
                                   ),

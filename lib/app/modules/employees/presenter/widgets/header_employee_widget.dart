@@ -1,4 +1,5 @@
 import 'package:badges/badges.dart' as badges;
+import 'package:desafio_mobile_betalent/app/shared/components/app_icon.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/domain/entities/app_assets.dart';
@@ -14,7 +15,7 @@ class HeaderEmployeeWidget extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: <Widget>[
         const CircleAvatar(
-          radius: 20,
+          radius: 22.5,
           child: Text('CG'),
         ),
         Ink(
@@ -34,8 +35,9 @@ class HeaderEmployeeWidget extends StatelessWidget {
               badgeStyle: badges.BadgeStyle(
                 badgeColor: context.colorScheme.primary,
               ),
-              child: Image.asset(
-                AppAssets.iconNotification,
+              child: const AppIcon(
+                path: AppAssets.iconNotification,
+                size: 32.0,
               ),
             ),
           ),
