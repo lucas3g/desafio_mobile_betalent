@@ -4,8 +4,6 @@ import 'package:desafio_mobile_betalent/app/core/domain/entities/usecase.dart';
 import 'package:desafio_mobile_betalent/app/modules/employees/domain/entities/employee.dart';
 import 'package:desafio_mobile_betalent/app/modules/employees/domain/entities/employee_failure.dart';
 import 'package:desafio_mobile_betalent/app/modules/employees/presenter/controller/bloc/employee_bloc.dart';
-import 'package:desafio_mobile_betalent/app/modules/employees/presenter/controller/bloc/employee_events.dart';
-import 'package:desafio_mobile_betalent/app/modules/employees/presenter/controller/bloc/employee_states.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 

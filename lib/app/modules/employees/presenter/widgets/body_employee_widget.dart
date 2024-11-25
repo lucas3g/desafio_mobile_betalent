@@ -7,8 +7,6 @@ import '../../../../shared/components/text_form_field.dart';
 import '../../../../shared/domain/entities/app_theme_constants.dart';
 import '../../../../shared/extensions/build_context_extension.dart';
 import '../controller/bloc/employee_bloc.dart';
-import '../controller/bloc/employee_events.dart';
-import '../controller/bloc/employee_states.dart';
 import 'expansion_tile_card_employee_widget.dart';
 
 class BodyEmployeeWidget extends StatefulWidget {

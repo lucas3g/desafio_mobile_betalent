@@ -7,8 +7,6 @@ import '../../../shared/components/app_snackbar.dart';
 import '../../../shared/components/spacer_height_widget.dart';
 import '../../../shared/domain/entities/app_theme_constants.dart';
 import 'controller/bloc/employee_bloc.dart';
-import 'controller/bloc/employee_events.dart';
-import 'controller/bloc/employee_states.dart';
 import 'widgets/body_employee_widget.dart';
 import 'widgets/header_employee_widget.dart';
 import 'widgets/notification_drawer_widget.dart';

@@ -47,21 +47,21 @@ class Employee {
     if (identical(this, other)) return true;
 
     return other is Employee &&
-        other.id.value == _id.value &&
-        other.name.value == _name.value &&
-        other.job.value == _job.value &&
-        other.admissionDate.value == _admissionDate.value &&
-        other.phone.value == _phone.value &&
-        other.image.value == _image.value;
+        other._id == _id &&
+        other._name == _name &&
+        other._job == _job &&
+        other._admissionDate == _admissionDate &&
+        other._phone == _phone &&
+        other._image == _image;
   }
 
   @override
   int get hashCode {
-    return _id.value.hashCode ^
-        _name.value.hashCode ^
-        _job.value.hashCode ^
-        _admissionDate.value.hashCode ^
-        _phone.value.hashCode ^
-        _image.value.hashCode;
+    return _id.hashCode ^
+        _name.hashCode ^
+        _job.hashCode ^
+        _admissionDate.hashCode ^
+        _phone.hashCode ^
+        _image.hashCode;
   }
 }

@@ -1,4 +1,4 @@
-import '../../../domain/entities/employee.dart';
+part of 'employee_bloc.dart';
 
 sealed class EmployeeStates {
   final List<Employee> employees;
@@ -39,13 +39,9 @@ sealed class EmployeeStates {
   }
 
   @override
-  bool operator ==(Object other) {
-    if (identical(this, other)) return true;
-
-    return other is EmployeeStates &&
-        other.employees == employees &&
-        other.filter == filter;
-  }
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is EmployeeStates && runtimeType == other.runtimeType;
 
   @override
   int get hashCode => 0;
@@ -55,11 +51,9 @@ class EmployeeInitial extends EmployeeStates {
   EmployeeInitial() : super(employees: [], filter: '');
 
   @override
-  bool operator ==(Object other) {
-    if (identical(this, other)) return true;
-
-    return other is EmployeeInitial;
-  }
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is EmployeeInitial && runtimeType == other.runtimeType;
 
   @override
   int get hashCode => 0;
@@ -69,11 +63,9 @@ class EmployeeLoading extends EmployeeStates {
   EmployeeLoading({required super.employees, required super.filter});
 
   @override
-  bool operator ==(Object other) {
-    if (identical(this, other)) return true;
-
-    return other is EmployeeLoading;
-  }
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is EmployeeLoading && runtimeType == other.runtimeType;
 
   @override
   int get hashCode => 0;
@@ -83,11 +75,9 @@ class EmployeeLoaded extends EmployeeStates {
   EmployeeLoaded({required super.employees, required super.filter});
 
   @override
-  bool operator ==(Object other) {
-    if (identical(this, other)) return true;
-
-    return other is EmployeeLoaded;
-  }
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is EmployeeLoaded && runtimeType == other.runtimeType;
 
   @override
   int get hashCode => 0;
@@ -103,11 +93,11 @@ class EmployeeError extends EmployeeStates {
   });
 
   @override
-  bool operator ==(Object other) {
-    if (identical(this, other)) return true;
-
-    return other is EmployeeError && other.message == message;
-  }
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is EmployeeError &&
+          runtimeType == other.runtimeType &&
+          message == other.message;
 
   @override
   int get hashCode => 0;
