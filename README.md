@@ -75,6 +75,14 @@ O projeto possui dois arquivos de configuração de ambiente:
 BASE_URL=http://[SEU_IP]:8080
 ```
 
+3. Altere o host no arquivo `config.yaml` para o IP da máquina que está rodando o servidor:
+```yaml
+name: Json Rest Server
+port: 8080
+host: [SEU_IP]
+database: database.json
+```
+
 Para descobrir seu IP:
 - Windows: `ipconfig`
 - Linux/Mac: `ifconfig` ou `ip addr`
