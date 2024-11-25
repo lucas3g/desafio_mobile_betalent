@@ -41,4 +41,27 @@ class Employee {
         _admissionDate = DateTimeVO(admissionDate),
         _phone = TextVO(phone),
         _image = TextVO(image);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+
+    return other is Employee &&
+        other.id.value == _id.value &&
+        other.name.value == _name.value &&
+        other.job.value == _job.value &&
+        other.admissionDate.value == _admissionDate.value &&
+        other.phone.value == _phone.value &&
+        other.image.value == _image.value;
+  }
+
+  @override
+  int get hashCode {
+    return _id.value.hashCode ^
+        _name.value.hashCode ^
+        _job.value.hashCode ^
+        _admissionDate.value.hashCode ^
+        _phone.value.hashCode ^
+        _image.value.hashCode;
+  }
 }
